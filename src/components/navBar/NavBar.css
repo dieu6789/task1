@@ -1,0 +1,41 @@
+.navBar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Menu {
+  font-size: 20px;
+  width: 225px;
+}
+
+.Menu :hover {
+  color: #0366fc;
+  transform: scale(1.05);
+  transition: 0.6s;
+}
+
+.btn1 :hover {
+  color: #0366fc;
+}
+
+.btn2 :hover {
+  color: #0366fc;
+}
+
+.btn3 :hover {
+  color: #0366fc;
+}
+
+.searchBar:hover {
+  transform: scale(1.05);
+  transition: 0.6s;
+}
