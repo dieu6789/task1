@@ -1,15 +1,16 @@
 import React from "react";
 import "./NewCollections.css";
-import new_collections from "../assets/new_collections";
 import Products from "../products/Products";
+import useProductList from "../../hooks/useProductList";
 
 const Newcollections = () => {
+  const prodductList = useProductList();
   return (
     <div className="new-collections">
       <h1>NEW COLLECTIONS</h1>
       <hr />
       <div className="collections">
-        {new_collections.map((product, i) => {
+        {prodductList.slice(0, 8).map((product, i) => {
           return (
             <Products
               key={i}

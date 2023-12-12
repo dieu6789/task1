@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./ProductManagement.css";
 import { Table } from "antd";
-import all_product from "../../components/assets/all_product";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import AddProductFormModal from "../../components/features/addProductForm/AddProductFormModal";
+import useProductList from "../../hooks/useProductList";
 
 const ProductManagement = () => {
-  const dataSource = all_product;
+  const productList = useProductList();
   const columns = [
     {
       title: "Name",
@@ -60,7 +60,7 @@ const ProductManagement = () => {
   return (
     <div>
       <AddProductFormModal />
-      <Table dataSource={dataSource} columns={columns} pagination />
+      <Table dataSource={productList} columns={columns} pagination />
     </div>
   );
 };

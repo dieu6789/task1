@@ -1,15 +1,16 @@
 import React from "react";
 import "./Popular.css";
-import data_product from "../assets/data";
 import Products from "../products/Products";
+import useProductList from "../../hooks/useProductList";
 
 const Popular = () => {
+  const productList = useProductList();
   return (
     <div className="popular">
       <h1>POPULAR IN WOMEN</h1>
       <hr />
       <div className="popular-product">
-        {data_product.map((product, i) => {
+        {productList.slice(0, 4).map((product, i) => {
           return (
             <Products
               key={i}

@@ -9,7 +9,7 @@ const Product = () => {
   const productList = useProductList();
   //const { all_product } = useContext(ShopContext);
   const { productId } = useParams();
-  const product = productList.find((e) => e.id === Number(productId));
+  const product = productList.find((e) => e.id === productId);
   return (
     <div>
       <BreadCrumb product={product} />

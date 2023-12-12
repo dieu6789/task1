@@ -1,10 +1,9 @@
 import React from "react";
 import "./ProductDisplay.css";
 import { Rate } from "antd";
-import useProductList from "../../hooks/useProductList";
+import PropTypes from "prop-types";
 
 const ProductDisplay = (props) => {
-  const productList = useProductList();
   const { product } = props;
   return (
     <div className="productdisplay">
@@ -56,6 +55,16 @@ const ProductDisplay = (props) => {
       </div>
     </div>
   );
+};
+
+ProductDisplay.propTypes = {
+  product: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    old_price: PropTypes.string.isRequired,
+    new_price: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductDisplay;
