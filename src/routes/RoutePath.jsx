@@ -5,12 +5,14 @@ import men_banner from "../components/assets/banner_men.png";
 import women_banner from "../components/assets/banner_women.png";
 import Product from "../pages/product/Product";
 import ProductManagement from "../pages/productManagement/ProductManagement";
+import AllProduct from "../pages/allProduct/AllProduct";
 
 function RoutePath() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/products/allProducts" element={<AllProduct />} />
         <Route
           path="/products/men'sClothes"
           element={

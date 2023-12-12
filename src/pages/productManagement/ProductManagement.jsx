@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./ProductManagement.css";
-import { Button, Form, Input, Table } from "antd";
+import { Table } from "antd";
 import all_product from "../../components/assets/all_product";
-import AddProduct from "../../components/addProduct/AddProduct";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import AddProductFormModal from "../../components/features/addProductForm/AddProductFormModal";
 
 const ProductManagement = () => {
   const dataSource = all_product;
@@ -59,16 +59,8 @@ const ProductManagement = () => {
   ];
   return (
     <div>
-      <Button>Add new product</Button>
-      <AddProduct />
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        pagination
-        rowSelection={{
-          type: "checkbox",
-        }}
-      />
+      <AddProductFormModal />
+      <Table dataSource={dataSource} columns={columns} pagination />
     </div>
   );
 };

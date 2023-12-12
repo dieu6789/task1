@@ -1,9 +1,12 @@
 import React, { createContext } from "react";
 import all_product from "../components/assets/all_product";
+import useProductList from "../hooks/useProductList";
 
 export const ShopContext = createContext(null);
 
 const ShopContextProvider = (props) => {
+  //const productList = useProductList();
+  //const contextValue = { productList };
   const contextValue = { all_product };
 
   return (

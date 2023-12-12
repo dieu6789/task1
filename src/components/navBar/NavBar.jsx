@@ -32,6 +32,11 @@ const NavBar = () => {
             key: "/products",
             children: [
               {
+                label: "All Products",
+                key: "/products/allProducts",
+                className: "btn",
+              },
+              {
                 label: "Men's Clothes",
                 key: "/products/men'sClothes",
                 className: "btn1",

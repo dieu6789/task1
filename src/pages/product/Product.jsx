@@ -3,11 +3,13 @@ import { ShopContext } from "../../context/shopContext";
 import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
 import ProductDisplay from "../../components/productDisplay/ProductDisplay";
+import useProductList from "../../hooks/useProductList";
 
 const Product = () => {
-  const { all_product } = useContext(ShopContext);
+  const productList = useProductList();
+  //const { all_product } = useContext(ShopContext);
   const { productId } = useParams();
-  const product = all_product.find((e) => e.id === Number(productId));
+  const product = productList.find((e) => e.id === Number(productId));
   return (
     <div>
       <BreadCrumb product={product} />

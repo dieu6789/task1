@@ -3,9 +3,10 @@ import "./ShopCategory.css";
 import { ShopContext } from "../../context/shopContext";
 import { Card, Select } from "antd";
 import Products from "../../components/products/Products";
+import useProductList from "../../hooks/useProductList";
 
 const ShopCategory = (props) => {
-  const { all_product } = useContext(ShopContext);
+  const productList = useProductList();
   return (
     <div className="shop-category">
       <img className="shopCategory-banner" src={props.banner}></img>
@@ -18,10 +19,14 @@ const ShopCategory = (props) => {
         </div>
       </div>
       <div className="shopCategory-products">
-        {all_product.map((product, i) => {
+        {productList.map((product, i) => {
           if (props.category === product.category) {
             return (
-              <Card>
+              <Card
+                style={{
+                  width: "300px",
+                }}
+              >
                 <Products
                   key={i}
                   id={product.id}

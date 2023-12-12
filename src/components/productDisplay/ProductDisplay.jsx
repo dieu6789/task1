@@ -1,10 +1,10 @@
 import React from "react";
 import "./ProductDisplay.css";
-import star_icon from "../assets/star_icon.png";
-import star_dull_icon from "../assets/star_dull_icon.png";
-import { Image, Rate } from "antd";
+import { Rate } from "antd";
+import useProductList from "../../hooks/useProductList";
 
 const ProductDisplay = (props) => {
+  const productList = useProductList();
   const { product } = props;
   return (
     <div className="productdisplay">
@@ -22,13 +22,6 @@ const ProductDisplay = (props) => {
       <div className="productdisplay-right">
         <h1>{product.name}</h1>
         <div className="productdisplay-right-stars">
-          {/* 
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_dull_icon} alt="" />
-            */}
           <Rate defaultValue={3.5} allowHalf disabled />
           <p>(122)</p>
         </div>
@@ -55,7 +48,7 @@ const ProductDisplay = (props) => {
         </div>
         <button>ADD TO CART</button>
         <p className="productdisplay-right-category">
-          <span>Category:</span> Women, T-Shirt, Crop Top
+          <span>Category:</span> {product.category}
         </p>
         <p className="productdisplay-right-category">
           <span>Tags:</span> Modern, Lastest
