@@ -51,7 +51,23 @@ export const deleteProduct = createAsyncThunk(
   async (id) => {
     try {
       const res = await axios.delete(
-        `https://657140f409586eff66425ac1.mockapi.io/api/task1/:${id}`
+        `https://657140f409586eff66425ac1.mockapi.io/api/task1/products/${id}`
+      );
+      return res.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+export const updateProduct = createAsyncThunk(
+  "product_list/deleteProduct",
+  async (values) => {
+    try {
+      let { id, name, category, image, new_price, old_price } = values;
+      const res = await axios.put(
+        `https://657140f409586eff66425ac1.mockapi.io/api/task1/products/${id}`,
+        { name, category, image, new_price, old_price }
       );
       return res.data;
     } catch (error) {

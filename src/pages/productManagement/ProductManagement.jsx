@@ -6,6 +6,7 @@ import AddProductFormModal from "../../components/features/addProductForm/AddPro
 import useProductList from "../../hooks/useProductList";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../redux/slices/ProductSlice";
+import EditProductFormModal from "../../components/features/editProduct/EditProductformModal";
 
 const ProductManagement = () => {
   const productList = useProductList();
@@ -50,6 +51,9 @@ const ProductManagement = () => {
         return (
           <>
             <EditOutlined
+              onClick={() => {
+                EditProductFormModal();
+              }}
               style={{
                 fontSize: 20,
                 cursor: "pointer",
@@ -74,6 +78,7 @@ const ProductManagement = () => {
   return (
     <div>
       <AddProductFormModal />
+      <EditProductFormModal />
       <Table dataSource={productList} columns={columns} pagination />
     </div>
   );
