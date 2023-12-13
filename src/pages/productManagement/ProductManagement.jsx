@@ -4,9 +4,17 @@ import { Table } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import AddProductFormModal from "../../components/features/addProductForm/AddProductFormModal";
 import useProductList from "../../hooks/useProductList";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../../redux/slices/ProductSlice";
 
 const ProductManagement = () => {
   const productList = useProductList();
+
+  const dispatch = useDispatch();
+
+  const onDeleteProduct = (id) => {
+    dispatch(deleteProduct(id));
+  };
   const columns = [
     {
       title: "Name",
@@ -22,6 +30,9 @@ const ProductManagement = () => {
       title: "Image",
       dataIndex: "image",
       key: "product_image",
+      render: (record) => {
+        return <img src={record}></img>;
+      },
     },
     {
       title: "New Price",
@@ -45,6 +56,9 @@ const ProductManagement = () => {
               }}
             />
             <DeleteOutlined
+              onClick={() => {
+                onDeleteProduct(record.id);
+              }}
               style={{
                 fontSize: 20,
                 color: "red",

@@ -25,6 +25,7 @@ const ShopCategory = (props) => {
               <Card
                 style={{
                   width: "300px",
+                  border: "none",
                 }}
               >
                 <Products

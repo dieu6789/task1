@@ -1,7 +1,10 @@
-import { Button, Form, Input, Upload, Col, Row } from "antd";
+import { Button, Form, Input, Col, Row, Select } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { addNewProduct } from "../../../redux/slices/ProductSlice";
 
-function AddProductForm() {
+function AddProductForm({ setAddModal }) {
+  const dispatch = useDispatch();
   const layout = {
     labelCol: {
       span: 6,
@@ -10,32 +13,34 @@ function AddProductForm() {
       span: 12,
     },
   };
+
+  const onFinish = (value) => {
+    dispatch(addNewProduct(value));
+    setAddModal(false);
+    console.log(value);
+  };
+
   return (
     <div className="addProduct">
-      <Form {...layout}>
-        <Form.Item label="Name">
+      <Form {...layout} onFinish={onFinish}>
+        <Form.Item name="name" label="Name">
           <Input placeholder="Enter product name..." />
         </Form.Item>
-        <Form.Item label="Category">
-          <Input placeholder="Enter product category..." />
+        <Form.Item name="category" label="Category">
+          <Select>
+            <Select.Option value="Men's Clothes">Men's Clothes</Select.Option>
+            <Select.Option value="Women's Clothes">
+              Women's Clothes
+            </Select.Option>
+          </Select>
         </Form.Item>
-        <Form.Item label="Image">
-          <Upload.Dragger
-            multiple
-            listType="picture-card"
-            action={"http://localhost:5173/products/management/"}
-            beforeUpload={(file) => {
-              console.log({ file });
-              return false;
-            }}
-          >
-            Drag Image Here OR <Button>Click Upload</Button>
-          </Upload.Dragger>
+        <Form.Item name="image" label="Image">
+          <Input placeholder="Enter Image URL..." />
         </Form.Item>
-        <Form.Item label="New Price">
+        <Form.Item name="new_price" label="New Price">
           <Input placeholder="Enter product new price..." />
         </Form.Item>
-        <Form.Item label="Old Price">
+        <Form.Item name="old_price" label="Old Price">
           <Input placeholder="Enter product old price..." />
         </Form.Item>
         <Row gutter={24}>

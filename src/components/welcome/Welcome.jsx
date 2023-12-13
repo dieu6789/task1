@@ -23,7 +23,7 @@ const Welcome = () => {
         </div>
       </div>
       <div className="welcome-right">
-        <img style={{ height: "1000px" }} src={welcome_icon}></img>
+        <img style={{ height: "875px" }} src={welcome_icon}></img>
       </div>
     </div>
   );

@@ -23,10 +23,6 @@
   transition: 0.6s;
 }
 
-.btn :hover {
-  color: #0366fc;
-}
-
 .btn1 :hover {
   color: #0366fc;
 }

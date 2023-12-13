@@ -3,16 +3,18 @@ import { useState } from "react";
 import AddProductForm from "./AddProductForm";
 
 function AddProductFormModal() {
-  const [addModal, SetAddModal] = useState(false);
+  const [addModal, setAddModal] = useState(false);
   const showModalAddProduct = () => {
-    SetAddModal(true);
+    setAddModal(true);
   };
   const closeModalAddProduct = () => {
-    SetAddModal(false);
+    setAddModal(false);
   };
   return (
     <div>
-      <Button onClick={showModalAddProduct}>Add New Product</Button>
+      <Button style={{ marginLeft: "10px" }} onClick={showModalAddProduct}>
+        Add New Product
+      </Button>
       <Modal
         open={addModal}
         footer={null}
@@ -20,7 +22,7 @@ function AddProductFormModal() {
         title="Add Product Form"
         width={700}
       >
-        <AddProductForm></AddProductForm>
+        <AddProductForm setAddModal={setAddModal}></AddProductForm>
       </Modal>
     </div>
   );

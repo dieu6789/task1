@@ -44,4 +44,12 @@
   color: #787878;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.shopCategory-loadmore:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+  transition: 0.6s;
 }
