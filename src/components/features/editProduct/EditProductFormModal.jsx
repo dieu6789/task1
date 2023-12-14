@@ -2,23 +2,25 @@ import { Modal } from "antd";
 import { useState } from "react";
 import EditProductForm from "./EditProductForm";
 
-function EditProductFormModal() {
-  const [addModal, setAddModal] = useState(false);
-  const showModalAddProduct = () => {
-    setAddModal(true);
-  };
-  const closeModalEditProduct = () => {
-    setAddModal(false);
-  };
+function EditProductFormModal({
+  openEditModal,
+  setOpenEditModal,
+  selectedProduct,
+}) {
   return (
     <Modal
-      open={addModal}
+      open={openEditModal}
       footer={null}
-      onCancel={closeModalEditProduct}
-      title="Add Product Form"
+      onCancel={() => {
+        setOpenEditModal(false);
+      }}
+      title="Edit Product Form"
       width={700}
     >
-      <EditProductForm setAddModal={setAddModal}></EditProductForm>
+      <EditProductForm
+        setOpenEditModal={setOpenEditModal}
+        selectedProduct={selectedProduct}
+      ></EditProductForm>
     </Modal>
   );
 }

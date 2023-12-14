@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProductManagement.css";
-import { Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import AddProductFormModal from "../../components/features/addProductForm/AddProductFormModal";
 import useProductList from "../../hooks/useProductList";
@@ -9,6 +9,10 @@ import { deleteProduct } from "../../redux/slices/ProductSlice";
 import EditProductFormModal from "../../components/features/editProduct/EditProductformModal";
 
 const ProductManagement = () => {
+  const [openEditModal, setOpenEditModal] = useState(false);
+
+  const [selectedProduct, setSelectedProduct] = useState([]);
+
   const productList = useProductList();
 
   const dispatch = useDispatch();
@@ -52,24 +56,31 @@ const ProductManagement = () => {
           <>
             <EditOutlined
               onClick={() => {
-                EditProductFormModal();
+                setOpenEditModal(true);
+                setSelectedProduct(record);
               }}
               style={{
                 fontSize: 20,
                 cursor: "pointer",
               }}
             />
-            <DeleteOutlined
-              onClick={() => {
+            <Popconfirm
+              cancelText="No"
+              okText="Yes"
+              title="Are you sure you want to delete this product ?"
+              onConfirm={() => {
                 onDeleteProduct(record.id);
               }}
-              style={{
-                fontSize: 20,
-                color: "red",
-                marginLeft: 24,
-                cursor: "pointer",
-              }}
-            />
+            >
+              <DeleteOutlined
+                style={{
+                  fontSize: 20,
+                  color: "red",
+                  marginLeft: 24,
+                  cursor: "pointer",
+                }}
+              />
+            </Popconfirm>
           </>
         );
       },
@@ -78,7 +89,11 @@ const ProductManagement = () => {
   return (
     <div>
       <AddProductFormModal />
-      <EditProductFormModal />
+      <EditProductFormModal
+        openEditModal={openEditModal}
+        setOpenEditModal={setOpenEditModal}
+        selectedProduct={selectedProduct}
+      />
       <Table dataSource={productList} columns={columns} pagination />
     </div>
   );
